@@ -6,7 +6,7 @@
 /*   By: nboratko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 21:41:04 by nboratko          #+#    #+#             */
-/*   Updated: 2022/07/01 12:57:40 by nboratko         ###   ########.fr       */
+/*   Updated: 2022/07/01 14:25:31 by nboratko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void	path_and_cmd(t_child *child, int index)
 		cmd = ft_split(child->av[index + 2], ' ');
 	if (child->here_doc)
 		cmd = ft_split(child->av[index + 3], ' ');
+	printf("%s\n", cmd[0]);
 	path = find_path(cmd, child->envp);
 	if (cmd[0] && path)
 		execute(cmd, path, child);

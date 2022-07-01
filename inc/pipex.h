@@ -6,7 +6,7 @@
 /*   By: nboratko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 14:54:03 by nboratko          #+#    #+#             */
-/*   Updated: 2022/07/01 11:02:23 by nboratko         ###   ########.fr       */
+/*   Updated: 2022/07/01 13:57:39 by nboratko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	**get_paths(char **envp, char **cmd);
 char	*get_path(char **cmd, char **envp);
 void	child_struct_init(t_child *child, char **av, char **envp);
 void	execute(char **cmd, char *path, t_child *child);
-void	check_args_normal(char **argv, int argc, char **envp);
+void	check_args_normal(char **argv, int argc);
 void	path_and_cmd(t_child *child, int index);
 
 #endif

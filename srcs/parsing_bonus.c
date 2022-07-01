@@ -6,7 +6,7 @@
 /*   By: nboratko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 14:46:01 by nboratko          #+#    #+#             */
-/*   Updated: 2022/07/01 13:00:49 by nboratko         ###   ########.fr       */
+/*   Updated: 2022/07/01 14:36:15 by nboratko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,10 @@ char	**get_paths(char **envp, char **cmd)
 	while (envp && envp[i] && !ft_strnstr(envp[i], "PATH", 4))
 		i++;
 	if (!envp[i])
-	{
-		free_split(cmd);
-		ft_putendl_fd("Error: path not found", 2);
-		exit(EXIT_FAILURE);
-	}
-	paths = ft_split(envp[i] + 5, ':');
+		ft_printf("bash: %s: %s\n", cmd[0], "No such file or directory");
+	paths = NULL;
+	if (envp[i])
+		paths = ft_split(envp[i] + 5, ':');
 	if (paths == NULL)
 		return (NULL);
 	return (paths);

@@ -6,7 +6,7 @@
 /*   By: nboratko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 13:00:19 by nboratko          #+#    #+#             */
-/*   Updated: 2022/07/01 12:59:40 by nboratko         ###   ########.fr       */
+/*   Updated: 2022/07/01 14:35:10 by nboratko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,32 +35,32 @@ static void	empty_cmd(char **argv, char **envp, int i)
 	if (*argv[i] == '\0')
 		ft_putendl_fd("Command '' not found", 2);
 	check = find_path(cmd, envp);
-	if (!check)
+	if (!check && !envp[34])
 	{
 		write(2, cmd[0], ft_strlen(cmd[0]));
-		write(2, ":command not found\n", 20);
+		write(2, ": command not found\n", 20);
 	}
 	free(check);
 	free_split(cmd);
 }
 
-void	check_args_normal(char **argv, int argc, char **envp)
+void	check_args_normal_bonus(char **argv, int argc, char **envp)
 {
 	int	ret;
 	int	fd;
 	int	i;
 
 	ret = 0;
-	fd = open(argv[1], O_RDONLY);
-	if (fd == -1)
-		ft_printf("bash: %s: %s\n", argv[1], strerror(errno));
-	if (fd != -1)
-		close(fd);
 	if (argc < 5)
 	{
 		ft_putendl_fd("Format: ./pipex infile cmd1 ... cmd2 outfile", 2);
 		exit(EXIT_FAILURE);
 	}
+	fd = open(argv[1], O_RDONLY);
+	if (fd == -1)
+		ft_printf("bash: %s: %s\n", argv[1], strerror(errno));
+	if (fd != -1)
+		close(fd);
 	i = 2;
 	if (fd == -1)
 		i = 3;

@@ -6,7 +6,7 @@
 /*   By: nboratko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 14:54:03 by nboratko          #+#    #+#             */
-/*   Updated: 2022/07/01 12:00:38 by nboratko         ###   ########.fr       */
+/*   Updated: 2022/07/01 13:56:36 by nboratko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	close_pipefd(int *pipefd);
 void	child_struct_init(t_child *child, char **av, char **envp);
 void	execute(char **cmd, char *path, t_child *child);
 void	get_here_doc(t_child *child);
-void	check_args_normal(char **argv, int argc, char **envp);
+void	check_args_normal_bonus(char **argv, int argc, char **envp);
 void	check_args_here_doc(char **argv, int argc);
 void	path_and_cmd(t_child *child, int index);
 
