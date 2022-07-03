@@ -12,6 +12,24 @@
 
 #include "../inc/pipex_bonus.h"
 
+char	**get_paths_unset(char **envp)
+{
+	char	**paths;
+	int		i;
+
+	i = 0;
+	while (envp && envp[i] && !ft_strnstr(envp[i], "PATH", 4))
+		i++;
+	//if (!envp[i])
+	//	ft_printf("bash: %s: %s\n", cmd[0], "No such file or directory");
+	paths = NULL;
+	if (envp[i])
+		paths = ft_split(envp[i] + 5, ':');
+	if (paths == NULL)
+		return (NULL);
+	return (paths);
+}
+
 char	**get_paths(char **envp, char **cmd)
 {
 	char	**paths;
@@ -53,7 +71,7 @@ char	*find_path(char **cmd, char **envp)
 		if (access(path, X_OK | F_OK) == 0)
 			return (free_split(paths), path);
 		free(path);
-	}	
+	}
 	free_split(paths);
 	return (NULL);
 }

@@ -41,6 +41,7 @@ int		main(int argc, char **argv, char **envp);
 void	free_split(char **av);
 void	cmd_not_found(char **cmd, char *path, t_child *child);
 char	**get_paths(char **envp, char **cmd);
+char	**get_paths_unset(char **envp);
 char	*find_path(char **cmd, char **envp);
 void	open_error(int file, char *path, char **cmd);
 void	free_and_close(int *pipefd, char **cmd, char *path, int file);

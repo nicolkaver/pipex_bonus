@@ -30,15 +30,20 @@ static void	empty_cmd(char **argv, char **envp, int i)
 {
 	char	**cmd;
 	char	*check;
+	char **path;
 
 	cmd = ft_split(argv[i], ' ');
+	path = get_paths_unset(envp);
 	if (*argv[i] == '\0')
 		ft_putendl_fd("Command '' not found", 2);
 	check = find_path(cmd, envp);
-	if (!check && !envp[34])
+	if (path)
+	{
+	if (!check)
 	{
 		write(2, cmd[0], ft_strlen(cmd[0]));
 		write(2, ": command not found\n", 20);
+	}
 	}
 	free(check);
 	free_split(cmd);
@@ -46,11 +51,9 @@ static void	empty_cmd(char **argv, char **envp, int i)
 
 void	check_args_normal_bonus(char **argv, int argc, char **envp)
 {
-	int	ret;
 	int	fd;
 	int	i;
 
-	ret = 0;
 	if (argc < 5)
 	{
 		ft_putendl_fd("Format: ./pipex infile cmd1 ... cmd2 outfile", 2);
